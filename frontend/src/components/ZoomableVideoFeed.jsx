@@ -8,6 +8,7 @@ import {
   Move,
   X,
 } from "lucide-react";
+import { apiUrl } from "../services/api";
 
 export default function ZoomableVideoFeed({ cam }) {
   const [scale, setScale] = useState(1);
@@ -94,7 +95,7 @@ export default function ZoomableVideoFeed({ cam }) {
   const frameSrc = cam.frame_b64
     ? `data:image/jpeg;base64,${cam.frame_b64}`
     : cam.last_frame_timestamp
-    ? `/api/cameras/${cam.id}/frame?t=${Math.floor(cam.last_frame_timestamp * 10)}`
+    ? apiUrl(`/api/cameras/${cam.id}/frame?t=${Math.floor(cam.last_frame_timestamp * 10)}`)
     : null;
 
   return (

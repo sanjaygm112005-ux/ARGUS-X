@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import api from "../services/api";
+import api, { wsUrl } from "../services/api";
 
 export function useMonitoringSocket(enabled = true) {
   const [snapshot, setSnapshot] = useState(null);
@@ -39,10 +39,9 @@ export function useMonitoringSocket(enabled = true) {
 
     const connectWs = () => {
       if (!active) return;
-      const proto = window.location.protocol === "https:" ? "wss:" : "ws:";
-      const wsUrl = `${proto}//${window.location.host}/ws/monitoring`;
+      const targetWsUrl = wsUrl("/ws/monitoring");
       try {
-        const ws = new WebSocket(wsUrl);
+        const ws = new WebSocket(targetWsUrl);
         wsRef.current = ws;
         ws.onopen = () => {
           if (active) setConnectionState("connected");

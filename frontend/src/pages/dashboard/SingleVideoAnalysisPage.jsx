@@ -17,7 +17,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import api from "../../services/api";
+import api, { apiUrl } from "../../services/api";
 
 function formatBytes(bytes) {
   if (!bytes) return "0 B";
@@ -325,9 +325,11 @@ export function SingleVideoAnalysisPage() {
                     key={`${selected.video_uid}-${streamKind}-${selected.analysis_status}`}
                     controls
                     className="w-full h-full object-contain"
-                    src={`/api/videos/${selected.video_uid}/stream?kind=${
-                      selected.has_processed_video ? streamKind : "original"
-                    }`}
+                    src={apiUrl(
+                      `/api/videos/${selected.video_uid}/stream?kind=${
+                        selected.has_processed_video ? streamKind : "original"
+                      }`
+                    )}
                   />
                 </div>
               </div>
