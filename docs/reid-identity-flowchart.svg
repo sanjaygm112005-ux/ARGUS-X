@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 750" width="100%" height="100%" style="background:#090d1a; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+  <defs>
+    <linearGradient id="flowGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+    <linearGradient id="flowGradLost" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="flowGradRec" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="flowGradUnc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Title Header -->
+  <rect x="35" y="25" width="1030" height="70" rx="14" fill="#131b2e" stroke="#1e293b" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <text x="60" y="58" fill="#f8fafc" font-size="20" font-weight="800">ARGUS-X Persistent Identity Recovery Flow</text>
+  <text x="60" y="78" fill="#94a3b8" font-size="12" font-weight="500">How ARGUS-X preserves Global IDs across disappearances, prevents ID swapping, and guarantees re-identification</text>
+  <rect x="885" y="45" width="160" height="30" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1"/>
+  <text x="965" y="65" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Zero ID Switching</text>
+
+  <!-- Step 1: Initial Detection -->
+  <g transform="translate(60, 130)">
+    <rect width="280" height="115" rx="14" fill="#111827" stroke="#0284c7" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="15" y="-12" width="125" height="24" rx="6" fill="url(#flowGrad1)"/>
+    <text x="77" y="4" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">STEP 1: DETECTED</text>
+    <text x="25" y="38" fill="#f8fafc" font-size="14" font-weight="700">Person 1 Enters Scene</text>
+    <text x="25" y="60" fill="#94a3b8" font-size="11">• Detected on Cam 1 (Local Track #12)</text>
+    <text x="25" y="78" fill="#94a3b8" font-size="11">• Assigned Global ID: <tspan fill="#38bdf8" font-weight="700">gid_person_01</tspan></text>
+    <text x="25" y="96" fill="#10b981" font-size="11" font-weight="600">● Lifecycle State: ACTIVE</text>
+  </g>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 340 185 L 420 185" stroke="#38bdf8" stroke-width="3" fill="none"/>
+  <polygon points="420,180 430,185 420,190" fill="#38bdf8"/>
+
+  <!-- Step 2: Disappearance -->
+  <g transform="translate(430, 130)">
+    <rect width="300" height="115" rx="14" fill="#111827" stroke="#d97706" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="15" y="-12" width="145" height="24" rx="6" fill="url(#flowGradLost)"/>
+    <text x="87" y="4" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">STEP 2: DISAPPEARANCE</text>
+    <text x="25" y="38" fill="#f8fafc" font-size="14" font-weight="700">Person Leaves Camera View</text>
+    <text x="25" y="60" fill="#94a3b8" font-size="11">• Cam 1 loses track (blind spot / exit)</text>
+    <text x="25" y="78" fill="#f59e0b" font-size="11" font-weight="600">● State: TEMPORARILY_LOST</text>
+    <text x="25" y="96" fill="#fbbf24" font-size="11" font-weight="700">🔒 gid_person_01 is LOCKED in Memory</text>
+  </g>
+
+  <!-- Arrow 2 to New Person check -->
+  <path d="M 730 185 L 800 185" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <polygon points="800,180 810,185 800,190" fill="#f59e0b"/>
+
+  <!-- Step 2B: Strict Invariant Banner -->
+  <g transform="translate(810, 130)">
+    <rect width="230" height="115" rx="14" fill="#18181b" stroke="#71717a" stroke-width="1.5" stroke-dasharray="4" filter="url(#cardShadow)"/>
+    <text x="20" y="32" fill="#ef4444" font-size="12" font-weight="800">CRITICAL INVARIANT</text>
+    <text x="20" y="55" fill="#f43f5e" font-size="12" font-weight="700">Different Person Enters?</text>
+    <text x="20" y="75" fill="#a1a1aa" font-size="11">ARGUS-X <tspan fill="#ffffff" font-weight="700">NEVER</tspan> gives</text>
+    <text x="20" y="93" fill="#38bdf8" font-size="11" font-weight="700">gid_person_01</text>
+    <text x="95" y="93" fill="#a1a1aa" font-size="11"> to a new person!</text>
+  </g>
+
+  <!-- Arrow down from Step 2 to Step 3 -->
+  <path d="M 580 245 L 580 305" stroke="#94a3b8" stroke-width="3" fill="none"/>
+  <polygon points="575,305 580,315 585,305" fill="#94a3b8"/>
+
+  <!-- Step 3: Reappearance / New Person Ingestion -->
+  <g transform="translate(380, 315)">
+    <rect width="400" height="110" rx="14" fill="#111827" stroke="#4f46e5" stroke-width="2" filter="url(#cardShadow)"/>
+    <text x="20" y="30" fill="#a5b4fc" font-size="11" font-weight="800">STEP 3: REAPPEARANCE / INGESTION</text>
+    <text x="20" y="52" fill="#f8fafc" font-size="14" font-weight="700">Person Detected on Cam 2 or Cam 3</text>
+    <text x="20" y="72" fill="#94a3b8" font-size="11">• Extract 512-dim OSNet appearance embedding</text>
+    <text x="20" y="90" fill="#94a3b8" font-size="11">• Query FAISS gallery: Cosine Similarity + Spatial-Temporal Gating</text>
+  </g>
+
+  <!-- Decision Branches from Step 3 -->
+  <!-- Down Left: High Match (Recovery) -->
+  <path d="M 440 425 L 440 480 L 220 480 L 220 520" stroke="#10b981" stroke-width="3" fill="none"/>
+  <polygon points="215,520 220,530 225,520" fill="#10b981"/>
+  <rect x="250" y="465" width="130" height="24" rx="6" fill="#065f46"/>
+  <text x="315" y="481" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Confidence ≥ 0.70</text>
+
+  <!-- Down Center: Ambiguous Match (Uncertain Queue) -->
+  <path d="M 580 425 L 580 520" stroke="#f59e0b" stroke-width="3" fill="none"/>
+  <polygon points="575,520 580,530 585,520" fill="#f59e0b"/>
+  <rect x="595" y="465" width="140" height="24" rx="6" fill="#78350f"/>
+  <text x="665" y="481" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">0.50 ≤ Confidence &lt; 0.70</text>
+
+  <!-- Down Right: No Match (New Identity) -->
+  <path d="M 720 425 L 720 480 L 920 480 L 920 520" stroke="#3b82f6" stroke-width="3" fill="none"/>
+  <polygon points="915,520 920,530 925,520" fill="#3b82f6"/>
+  <rect x="760" y="465" width="130" height="24" rx="6" fill="#1e3a8a"/>
+  <text x="825" y="481" fill="#60a5fa" font-size="10" font-weight="700" text-anchor="middle">Confidence &lt; 0.50</text>
+
+  <!-- Step 4A: Recovered Identity -->
+  <g transform="translate(60, 530)">
+    <rect width="320" height="155" rx="14" fill="#064e3b" fill-opacity="0.4" stroke="#10b981" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="15" y="-12" width="180" height="24" rx="6" fill="url(#flowGradRec)"/>
+    <text x="105" y="4" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">RECOVERED ORIGINAL ID</text>
+    <text x="25" y="38" fill="#34d399" font-size="15" font-weight="800">Same Person Reappeared!</text>
+    <text x="25" y="60" fill="#ecfdf5" font-size="11">• Re-assigned: <tspan fill="#6ee7b7" font-weight="800">gid_person_01</tspan></text>
+    <text x="25" y="78" fill="#a7f3d0" font-size="11">• State: <tspan font-weight="700">RECOVERED ➔ ACTIVE</tspan></text>
+    <text x="25" y="96" fill="#a7f3d0" font-size="11">• Journey logged: Cam 1 ➔ Cam 2</text>
+    <text x="25" y="116" fill="#6ee7b7" font-size="11" font-weight="700">✓ Original Global ID Restored</text>
+  </g>
+
+  <!-- Step 4B: Uncertain Review -->
+  <g transform="translate(420, 530)">
+    <rect width="320" height="155" rx="14" fill="#451a03" fill-opacity="0.4" stroke="#f59e0b" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="15" y="-12" width="180" height="24" rx="6" fill="url(#flowGradLost)"/>
+    <text x="105" y="4" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">UNCERTAIN MATCH</text>
+    <text x="25" y="38" fill="#fbbf24" font-size="15" font-weight="800">Ambiguous Visual Evidence</text>
+    <text x="25" y="60" fill="#fef3c7" font-size="11">• Gated by appearance ambiguity</text>
+    <text x="25" y="78" fill="#fde68a" font-size="11">• State: <tspan font-weight="700">UNCERTAIN (Held)</tspan></text>
+    <text x="25" y="96" fill="#fde68a" font-size="11">• Routed to Operator Review Queue</text>
+    <text x="25" y="116" fill="#fbbf24" font-size="11" font-weight="700">🔒 Never auto-switches IDs</text>
+  </g>
+
+  <!-- Step 4C: Distinct New Identity -->
+  <g transform="translate(780, 530)">
+    <rect width="280" height="155" rx="14" fill="#1e1b4b" fill-opacity="0.4" stroke="#3b82f6" stroke-width="2" filter="url(#cardShadow)"/>
+    <rect x="15" y="-12" width="160" height="24" rx="6" fill="url(#flowGrad1)"/>
+    <text x="95" y="4" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">NEW GLOBAL ID</text>
+    <text x="25" y="38" fill="#93c5fd" font-size="15" font-weight="800">Completely New Person</text>
+    <text x="25" y="60" fill="#eff6ff" font-size="11">• No match in gallery</text>
+    <text x="25" y="78" fill="#dbeafe" font-size="11">• Assigned: <tspan fill="#60a5fa" font-weight="800">gid_person_02</tspan></text>
+    <text x="25" y="96" fill="#dbeafe" font-size="11">• State: <tspan font-weight="700">ACTIVE</tspan></text>
+    <text x="25" y="116" fill="#93c5fd" font-size="11" font-weight="700">✓ Distinct Identity Maintained</text>
+  </g>
+</svg>

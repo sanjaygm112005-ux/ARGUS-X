@@ -1,0 +1,38 @@
+{
+  "description": "ARGUS-X real-video ground-truth annotations for multi-camera identity recovery evaluation.",
+  "videos": {
+    "camera1": "datasets/camera1.mp4",
+    "camera2": "datasets/camera2.mp4"
+  },
+  "instructions": {
+    "required_fields": [
+      "camera_id (str: 'camera1' or 'camera2')",
+      "timestamp (float: seconds from start of that video)",
+      "gt_identity_id (str: e.g. 'PERSON_A', 'PERSON_B' \u2014 MUST be identical across cameras for the same physical person)",
+      "bbox (list[float]: [x1, y1, x2, y2] in pixel coordinates)"
+    ],
+    "optional_fields": [
+      "scenario_tag (str: e.g. 'camera_transition', 'occlusion', 'lighting_change', 'similar_appearance', 'baseline')"
+    ],
+    "matching_tolerances": {
+      "timestamp_tolerance_sec": 0.25,
+      "iou_threshold": 0.3,
+      "reappearance_gap_sec": 2.0
+    },
+    "workflow": "Run './venv/bin/streamlit run evaluation/annotate_app.py' to annotate frames interactively and save here, then validate with './venv/bin/python -m evaluation.annotation_validator --require-non-empty'."
+  },
+  "annotations": [
+    {
+      "camera_id": "camera1",
+      "timestamp": 0.0,
+      "gt_identity_id": "PERSON_A",
+      "bbox": [
+        92.1,
+        376.1,
+        122.7,
+        465.2
+      ],
+      "scenario_tag": "camera_transition"
+    }
+  ]
+}

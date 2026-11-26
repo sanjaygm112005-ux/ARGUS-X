@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #faf7f2;
+    color: #0f1e3d;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  html.dark body {
+    background-color: #050816;
+    color: #f8fafc;
+  }
+
+  /* Universal clean theme for form elements */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  select,
+  textarea {
+    background-color: #fffdf9 !important;
+    color: #0f1e3d !important;
+    border-color: #d6cfc2 !important;
+  }
+
+  html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  html.dark select,
+  html.dark textarea {
+    background-color: #080f26 !important;
+    color: #ffffff !important;
+    border-color: #334155 !important;
+  }
+
+  /* Tables */
+  table th {
+    color: #1e3a8a;
+  }
+  html.dark table th {
+    color: #94a3b8;
+  }
+  table td, table th {
+    border-color: #e8e2d5;
+  }
+  html.dark table td, html.dark table th {
+    border-color: #1e293b;
+  }
+}
+
+/* Light Cream + Royal Blue Glass Card (Default) */
+.glass-card {
+  background: #fffdf9;
+  border: 1px solid #e6dfd1;
+  box-shadow: 0 4px 20px -2px rgba(29, 78, 216, 0.06), 0 1px 3px rgba(15, 30, 61, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 8px 28px -4px rgba(29, 78, 216, 0.12);
+}
+
+/* Dark Mode Glass Card */
+html.dark .glass-card {
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.72), rgba(10, 16, 38, 0.58));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(56, 189, 248, 0.16);
+  box-shadow: none;
+}
+
+html.dark .glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.38);
+}
+
+/* Background Grids */
+.argus-grid-bg {
+  background-color: #faf7f2;
+  background-image:
+    radial-gradient(circle at 18% 18%, rgba(29, 78, 216, 0.09), transparent 38%),
+    radial-gradient(circle at 82% 12%, rgba(37, 99, 235, 0.07), transparent 36%),
+    linear-gradient(to right, rgba(30, 64, 175, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(30, 64, 175, 0.06) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+html.dark .argus-grid-bg {
+  background-color: #050816;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.14), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(139, 92, 246, 0.16), transparent 40%),
+    linear-gradient(to right, rgba(148, 163, 184, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-pulse,
+  .animate-bounce,
+  .animate-ping {
+    animation: none !important;
+  }
+}

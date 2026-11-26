@@ -1,0 +1,1240 @@
+{
+  "camera1": {
+    "video_path": "datasets/camera1.mp4/WhatsApp Video 2026-11-25 at 22.42.45.mp4",
+    "resolution": [
+      478,
+      850
+    ],
+    "fps": 30.005,
+    "frame_count": 475,
+    "duration_sec": 15.831,
+    "contact_sheet": "evaluation/results/annotation_preview/camera1_contact_sheet.jpg",
+    "sampled_frames": [
+      {
+        "frame_index": 0,
+        "timestamp": 0.0,
+        "person_count": 5,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              92.1,
+              376.1,
+              122.7,
+              465.2
+            ],
+            "confidence": 0.813
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              142.1,
+              375.3,
+              170.5,
+              456.6
+            ],
+            "confidence": 0.7639
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              193.1,
+              375.4,
+              223.7,
+              458.9
+            ],
+            "confidence": 0.6982
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              167.8,
+              376.3,
+              189.0,
+              454.8
+            ],
+            "confidence": 0.6258
+          },
+          {
+            "temp_id": 5,
+            "bbox": [
+              222.7,
+              383.8,
+              244.0,
+              461.6
+            ],
+            "confidence": 0.5015
+          }
+        ]
+      },
+      {
+        "frame_index": 30,
+        "timestamp": 1.0,
+        "person_count": 5,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              94.3,
+              372.7,
+              122.6,
+              458.2
+            ],
+            "confidence": 0.8485
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              172.9,
+              369.3,
+              199.1,
+              452.2
+            ],
+            "confidence": 0.7246
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              148.4,
+              372.7,
+              175.9,
+              451.4
+            ],
+            "confidence": 0.6973
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              194.2,
+              375.5,
+              218.7,
+              453.8
+            ],
+            "confidence": 0.654
+          },
+          {
+            "temp_id": 5,
+            "bbox": [
+              220.2,
+              382.4,
+              239.5,
+              455.3
+            ],
+            "confidence": 0.3682
+          }
+        ]
+      },
+      {
+        "frame_index": 60,
+        "timestamp": 2.0,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              88.1,
+              371.6,
+              116.8,
+              451.6
+            ],
+            "confidence": 0.8454
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              140.1,
+              364.6,
+              176.9,
+              454.0
+            ],
+            "confidence": 0.7575
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              177.7,
+              373.2,
+              202.3,
+              458.5
+            ],
+            "confidence": 0.7081
+          }
+        ]
+      },
+      {
+        "frame_index": 90,
+        "timestamp": 3.0,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              129.2,
+              361.2,
+              162.9,
+              454.2
+            ],
+            "confidence": 0.8108
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              96.9,
+              371.6,
+              124.3,
+              449.3
+            ],
+            "confidence": 0.7643
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              215.3,
+              369.4,
+              237.8,
+              458.9
+            ],
+            "confidence": 0.6813
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              181.3,
+              369.3,
+              208.8,
+              460.6
+            ],
+            "confidence": 0.6431
+          }
+        ]
+      },
+      {
+        "frame_index": 120,
+        "timestamp": 3.999,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              284.0,
+              254.1,
+              477.1,
+              745.4
+            ],
+            "confidence": 0.9162
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              184.0,
+              379.5,
+              214.3,
+              475.3
+            ],
+            "confidence": 0.7161
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              105.6,
+              370.7,
+              147.7,
+              471.1
+            ],
+            "confidence": 0.7059
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              219.5,
+              379.4,
+              250.0,
+              474.9
+            ],
+            "confidence": 0.512
+          }
+        ]
+      },
+      {
+        "frame_index": 150,
+        "timestamp": 4.999,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              169.2,
+              292.5,
+              319.4,
+              649.8
+            ],
+            "confidence": 0.9144
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              88.8,
+              370.7,
+              130.6,
+              476.5
+            ],
+            "confidence": 0.8074
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              125.3,
+              383.1,
+              146.9,
+              452.1
+            ],
+            "confidence": 0.7418
+          }
+        ]
+      },
+      {
+        "frame_index": 180,
+        "timestamp": 5.999,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              101.3,
+              303.3,
+              221.0,
+              588.1
+            ],
+            "confidence": 0.8861
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              41.9,
+              355.3,
+              78.7,
+              474.6
+            ],
+            "confidence": 0.8245
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              205.2,
+              366.4,
+              239.2,
+              486.2
+            ],
+            "confidence": 0.7036
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              246.6,
+              371.2,
+              285.8,
+              484.2
+            ],
+            "confidence": 0.6728
+          }
+        ]
+      },
+      {
+        "frame_index": 210,
+        "timestamp": 6.999,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              73.4,
+              316.5,
+              169.4,
+              553.1
+            ],
+            "confidence": 0.8665
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              218.3,
+              360.4,
+              258.1,
+              492.4
+            ],
+            "confidence": 0.8278
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              271.6,
+              361.6,
+              312.4,
+              492.3
+            ],
+            "confidence": 0.7837
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              161.4,
+              375.6,
+              185.4,
+              444.2
+            ],
+            "confidence": 0.7191
+          }
+        ]
+      },
+      {
+        "frame_index": 240,
+        "timestamp": 7.999,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              16.4,
+              327.7,
+              94.1,
+              527.1
+            ],
+            "confidence": 0.9132
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              266.7,
+              361.9,
+              326.5,
+              508.7
+            ],
+            "confidence": 0.8359
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              224.6,
+              362.2,
+              272.8,
+              506.0
+            ],
+            "confidence": 0.7958
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              159.3,
+              377.3,
+              185.2,
+              444.1
+            ],
+            "confidence": 0.5934
+          }
+        ]
+      },
+      {
+        "frame_index": 270,
+        "timestamp": 8.999,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              296.2,
+              355.9,
+              361.9,
+              519.3
+            ],
+            "confidence": 0.8596
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              251.8,
+              353.9,
+              301.4,
+              519.6
+            ],
+            "confidence": 0.8156
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              0.0,
+              346.1,
+              32.6,
+              515.5
+            ],
+            "confidence": 0.718
+          }
+        ]
+      },
+      {
+        "frame_index": 300,
+        "timestamp": 9.998,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              332.4,
+              355.0,
+              408.8,
+              536.3
+            ],
+            "confidence": 0.9208
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              282.1,
+              350.7,
+              338.3,
+              540.0
+            ],
+            "confidence": 0.8928
+          }
+        ]
+      },
+      {
+        "frame_index": 330,
+        "timestamp": 10.998,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              366.3,
+              348.4,
+              445.4,
+              553.4
+            ],
+            "confidence": 0.9292
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              311.2,
+              338.5,
+              377.1,
+              552.6
+            ],
+            "confidence": 0.9067
+          }
+        ]
+      },
+      {
+        "frame_index": 360,
+        "timestamp": 11.998,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              357.4,
+              332.9,
+              434.8,
+              584.4
+            ],
+            "confidence": 0.8851
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              428.8,
+              341.6,
+              477.7,
+              577.1
+            ],
+            "confidence": 0.8334
+          }
+        ]
+      },
+      {
+        "frame_index": 390,
+        "timestamp": 12.998,
+        "person_count": 1,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              417.8,
+              324.2,
+              477.3,
+              617.9
+            ],
+            "confidence": 0.8923
+          }
+        ]
+      },
+      {
+        "frame_index": 420,
+        "timestamp": 13.998,
+        "person_count": 0,
+        "detections": []
+      },
+      {
+        "frame_index": 450,
+        "timestamp": 14.998,
+        "person_count": 0,
+        "detections": []
+      },
+      {
+        "frame_index": 474,
+        "timestamp": 15.797,
+        "person_count": 0,
+        "detections": []
+      }
+    ]
+  },
+  "camera2": {
+    "video_path": "datasets/camera2.mp4/WhatsApp Video 2026-11-25 at 22.41.53.mp4",
+    "resolution": [
+      478,
+      850
+    ],
+    "fps": 30.005,
+    "frame_count": 492,
+    "duration_sec": 16.397,
+    "contact_sheet": "evaluation/results/annotation_preview/camera2_contact_sheet.jpg",
+    "sampled_frames": [
+      {
+        "frame_index": 0,
+        "timestamp": 0.0,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              415.5,
+              318.7,
+              478.0,
+              544.4
+            ],
+            "confidence": 0.8258
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              166.3,
+              369.1,
+              191.6,
+              452.6
+            ],
+            "confidence": 0.6357
+          }
+        ]
+      },
+      {
+        "frame_index": 30,
+        "timestamp": 1.0,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              384.2,
+              303.0,
+              475.9,
+              586.1
+            ],
+            "confidence": 0.9141
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              171.4,
+              360.5,
+              196.6,
+              447.8
+            ],
+            "confidence": 0.7826
+          }
+        ]
+      },
+      {
+        "frame_index": 60,
+        "timestamp": 2.0,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              357.3,
+              315.1,
+              448.7,
+              559.7
+            ],
+            "confidence": 0.894
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              174.4,
+              359.7,
+              199.6,
+              452.5
+            ],
+            "confidence": 0.777
+          }
+        ]
+      },
+      {
+        "frame_index": 90,
+        "timestamp": 2.999,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              331.4,
+              322.7,
+              408.1,
+              545.5
+            ],
+            "confidence": 0.8688
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              175.0,
+              359.0,
+              203.0,
+              458.1
+            ],
+            "confidence": 0.8138
+          }
+        ]
+      },
+      {
+        "frame_index": 120,
+        "timestamp": 3.999,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              280.0,
+              328.8,
+              357.9,
+              526.7
+            ],
+            "confidence": 0.9215
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              181.5,
+              358.7,
+              212.8,
+              465.0
+            ],
+            "confidence": 0.7714
+          }
+        ]
+      },
+      {
+        "frame_index": 150,
+        "timestamp": 4.999,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              380.4,
+              219.3,
+              477.8,
+              777.4
+            ],
+            "confidence": 0.8953
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              184.5,
+              351.3,
+              218.9,
+              467.2
+            ],
+            "confidence": 0.8596
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              250.5,
+              330.2,
+              315.4,
+              516.7
+            ],
+            "confidence": 0.8448
+          }
+        ]
+      },
+      {
+        "frame_index": 180,
+        "timestamp": 5.999,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              252.7,
+              269.6,
+              384.3,
+              679.0
+            ],
+            "confidence": 0.9223
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              185.8,
+              337.1,
+              249.5,
+              500.9
+            ],
+            "confidence": 0.8116
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              176.6,
+              349.3,
+              208.6,
+              475.2
+            ],
+            "confidence": 0.7215
+          }
+        ]
+      },
+      {
+        "frame_index": 210,
+        "timestamp": 6.999,
+        "person_count": 2,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              185.6,
+              292.8,
+              293.3,
+              610.6
+            ],
+            "confidence": 0.8982
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              141.2,
+              342.7,
+              187.1,
+              491.2
+            ],
+            "confidence": 0.8169
+          }
+        ]
+      },
+      {
+        "frame_index": 240,
+        "timestamp": 7.999,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              374.2,
+              251.7,
+              478.0,
+              677.5
+            ],
+            "confidence": 0.9032
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              97.1,
+              338.2,
+              151.1,
+              482.8
+            ],
+            "confidence": 0.8694
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              150.2,
+              305.7,
+              240.8,
+              575.0
+            ],
+            "confidence": 0.8619
+          }
+        ]
+      },
+      {
+        "frame_index": 270,
+        "timestamp": 8.998,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              275.3,
+              284.6,
+              412.4,
+              624.4
+            ],
+            "confidence": 0.9059
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              71.2,
+              339.7,
+              123.1,
+              476.2
+            ],
+            "confidence": 0.9006
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              121.5,
+              316.5,
+              199.7,
+              547.2
+            ],
+            "confidence": 0.8842
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              186.8,
+              333.6,
+              223.8,
+              499.3
+            ],
+            "confidence": 0.7529
+          }
+        ]
+      },
+      {
+        "frame_index": 300,
+        "timestamp": 9.998,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              221.1,
+              283.8,
+              330.2,
+              558.9
+            ],
+            "confidence": 0.9237
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              42.7,
+              327.7,
+              92.6,
+              456.2
+            ],
+            "confidence": 0.8781
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              104.0,
+              304.8,
+              174.7,
+              512.2
+            ],
+            "confidence": 0.8719
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              163.0,
+              312.9,
+              212.0,
+              492.8
+            ],
+            "confidence": 0.8374
+          }
+        ]
+      },
+      {
+        "frame_index": 330,
+        "timestamp": 10.998,
+        "person_count": 4,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              202.6,
+              300.8,
+              277.4,
+              533.0
+            ],
+            "confidence": 0.8814
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              94.2,
+              313.8,
+              156.6,
+              505.8
+            ],
+            "confidence": 0.8638
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              154.4,
+              316.6,
+              206.5,
+              504.6
+            ],
+            "confidence": 0.8466
+          },
+          {
+            "temp_id": 4,
+            "bbox": [
+              6.5,
+              336.4,
+              45.3,
+              455.3
+            ],
+            "confidence": 0.8083
+          }
+        ]
+      },
+      {
+        "frame_index": 360,
+        "timestamp": 11.998,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              187.6,
+              310.3,
+              253.7,
+              505.6
+            ],
+            "confidence": 0.9
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              64.5,
+              323.8,
+              127.1,
+              494.5
+            ],
+            "confidence": 0.888
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              122.1,
+              318.3,
+              175.8,
+              504.6
+            ],
+            "confidence": 0.8857
+          }
+        ]
+      },
+      {
+        "frame_index": 390,
+        "timestamp": 12.998,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              42.5,
+              318.8,
+              103.8,
+              480.9
+            ],
+            "confidence": 0.9021
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              158.1,
+              312.0,
+              213.2,
+              485.4
+            ],
+            "confidence": 0.8456
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              101.8,
+              320.5,
+              148.8,
+              491.5
+            ],
+            "confidence": 0.8285
+          }
+        ]
+      },
+      {
+        "frame_index": 420,
+        "timestamp": 13.998,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              26.4,
+              317.1,
+              77.2,
+              466.9
+            ],
+            "confidence": 0.8575
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              134.5,
+              316.1,
+              181.1,
+              468.8
+            ],
+            "confidence": 0.8274
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              95.5,
+              312.3,
+              143.0,
+              477.2
+            ],
+            "confidence": 0.7915
+          }
+        ]
+      },
+      {
+        "frame_index": 450,
+        "timestamp": 14.997,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              24.5,
+              328.9,
+              85.4,
+              473.6
+            ],
+            "confidence": 0.8158
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              112.0,
+              328.5,
+              150.3,
+              485.5
+            ],
+            "confidence": 0.7558
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              137.3,
+              330.7,
+              175.8,
+              474.9
+            ],
+            "confidence": 0.6492
+          }
+        ]
+      },
+      {
+        "frame_index": 480,
+        "timestamp": 15.997,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              33.2,
+              320.7,
+              80.0,
+              465.4
+            ],
+            "confidence": 0.8372
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              110.2,
+              316.6,
+              155.2,
+              475.3
+            ],
+            "confidence": 0.8231
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              162.3,
+              341.2,
+              190.0,
+              412.0
+            ],
+            "confidence": 0.6918
+          }
+        ]
+      },
+      {
+        "frame_index": 491,
+        "timestamp": 16.364,
+        "person_count": 3,
+        "detections": [
+          {
+            "temp_id": 1,
+            "bbox": [
+              46.6,
+              308.1,
+              80.6,
+              450.1
+            ],
+            "confidence": 0.7968
+          },
+          {
+            "temp_id": 2,
+            "bbox": [
+              106.3,
+              305.2,
+              149.9,
+              464.8
+            ],
+            "confidence": 0.7617
+          },
+          {
+            "temp_id": 3,
+            "bbox": [
+              154.9,
+              324.8,
+              181.8,
+              398.1
+            ],
+            "confidence": 0.6962
+          }
+        ]
+      }
+    ]
+  }
+}

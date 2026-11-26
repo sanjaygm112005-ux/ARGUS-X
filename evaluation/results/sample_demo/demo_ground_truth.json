@@ -1,0 +1,244 @@
+{
+  "annotations": [
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.0,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        80.0,
+        120.0,
+        143.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.0,
+      "gt_identity_id": "person_B",
+      "bbox": [
+        360.0,
+        120.0,
+        443.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.2,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        86.0,
+        120.0,
+        149.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.2,
+      "gt_identity_id": "person_B",
+      "bbox": [
+        364.0,
+        120.0,
+        447.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.4,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        92.0,
+        120.0,
+        155.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.4,
+      "gt_identity_id": "person_B",
+      "bbox": [
+        368.0,
+        120.0,
+        451.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.6,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        98.0,
+        120.0,
+        161.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.6,
+      "gt_identity_id": "person_B",
+      "bbox": [
+        372.0,
+        120.0,
+        455.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.8,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        104.0,
+        120.0,
+        167.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_1",
+      "timestamp": 0.8,
+      "gt_identity_id": "person_B",
+      "bbox": [
+        376.0,
+        120.0,
+        459.0,
+        340.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.0,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        140.0,
+        130.0,
+        203.0,
+        350.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.0,
+      "gt_identity_id": "person_C",
+      "bbox": [
+        400.0,
+        130.0,
+        459.0,
+        350.0
+      ],
+      "scenario_tag": "different_person"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.2,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        146.0,
+        130.0,
+        209.0,
+        350.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.2,
+      "gt_identity_id": "person_C",
+      "bbox": [
+        405.0,
+        130.0,
+        464.0,
+        350.0
+      ],
+      "scenario_tag": "different_person"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.4,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        152.0,
+        130.0,
+        215.0,
+        350.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.4,
+      "gt_identity_id": "person_C",
+      "bbox": [
+        410.0,
+        130.0,
+        469.0,
+        350.0
+      ],
+      "scenario_tag": "different_person"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.6,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        158.0,
+        130.0,
+        221.0,
+        350.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.6,
+      "gt_identity_id": "person_C",
+      "bbox": [
+        415.0,
+        130.0,
+        474.0,
+        350.0
+      ],
+      "scenario_tag": "different_person"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.8,
+      "gt_identity_id": "person_A",
+      "bbox": [
+        164.0,
+        130.0,
+        227.0,
+        350.0
+      ],
+      "scenario_tag": "camera_transition"
+    },
+    {
+      "camera_id": "cam_2",
+      "timestamp": 7.8,
+      "gt_identity_id": "person_C",
+      "bbox": [
+        420.0,
+        130.0,
+        479.0,
+        350.0
+      ],
+      "scenario_tag": "different_person"
+    }
+  ]
+}

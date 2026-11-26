@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Model weights & checkpoints (do not commit binaries)
+*.pt
+*.pth
+*.onnx
+*.bin
+*.safetensors
+
+# Datasets & media files
+datasets/*
+!datasets/.gitkeep
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Logs, SQLite databases & FAISS indexes
+logs/*
+!logs/.gitkeep
+*.log
+*.db
+*.sqlite
+*.sqlite3
+*.faiss
+*.index
+
+# Frontend (React)
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+frontend/.env*
+
+# Environment & secrets
+.env
+.env.local
