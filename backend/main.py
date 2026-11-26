@@ -7,16 +7,13 @@ sharing a single ArgusServiceState AI engine instance.
 
 from __future__ import annotations
 
+import os
 from contextlib import asynccontextmanager
 from typing import Optional
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api.routes.audit import router as legacy_audit_router
-from api.routes.cameras import router as legacy_cameras_router
-from api.routes.identities import router as legacy_identities_router
-from api.state import ArgusServiceState
 from backend.analytics.router import router as analytics_router
 from backend.audit.router import router as audit_router
 from backend.auth.router import router as auth_router
@@ -29,19 +26,50 @@ from backend.datasets.router import router as datasets_router
 from backend.identities.router import router as identities_router
 from backend.monitoring.router import router as monitoring_router
 from backend.multicamera.router import router as multicamera_router
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.seed import seed_database
 from backend.users.router import router as users_router
 from backend.videos.router import router as videos_router
 
+# Detect if we are running in a resource-limited cloud environment (Render, etc.)
+_CLOUD_MODE = os.getenv("RENDER", "").lower() in ("1", "true", "yes") or \
+              os.getenv("ARGUS_CLOUD_MODE", "").lower() in ("1", "true", "yes")
+
+
+def _build_ai_bridge(service_state=None):
+    """Lazy-load heavy AI imports only when NOT in cloud/API-only mode."""
+    if _CLOUD_MODE:
+        # Return a lightweight stub so the API server starts without loading GPU models
+        class _AIStub:
+            def get_statistics(self):
+                return {"mode": "cloud-api-only", "ai_enabled": False}
+
+            def close(self):
+                pass
+
+        class _AIBridgeStub:
+            state = _AIStub()
+
+            def register_or_sync_camera(self, *a, **kw):
+                pass
+
+            def close(self):
+                pass
+
+        return _AIBridgeStub()
+
+    # Full AI stack – only imported on local / GPU servers
+    from api.state import ArgusServiceState
+    from backend.services.ai_engine import ArgusAIEngineBridge
+    return ArgusAIEngineBridge(service_state=service_state)
+
 
 def create_fullstack_app(
-    service_state: Optional[ArgusServiceState] = None,
+    service_state=None,
     init_db: bool = True,
 ) -> FastAPI:
     """Create the unified ARGUS-X FastAPI application."""
     settings = get_backend_settings()
-    bridge = ArgusAIEngineBridge(service_state=service_state)
+    bridge = _build_ai_bridge(service_state)
 
     if init_db:
         engine = build_engine(settings.database_url)
@@ -61,9 +89,10 @@ def create_fullstack_app(
                 synchronize_session=False,
             )
             db.commit()
-            for cam in db.query(Camera).filter(Camera.enabled.is_(True)).all():
-                if cam.source and Path(cam.source).is_file():
-                    bridge.register_or_sync_camera(cam, auto_start=True)
+            if not _CLOUD_MODE:
+                for cam in db.query(Camera).filter(Camera.enabled.is_(True)).all():
+                    if cam.source and Path(cam.source).is_file():
+                        bridge.register_or_sync_camera(cam, auto_start=True)
         finally:
             db.close()
 
@@ -71,7 +100,7 @@ def create_fullstack_app(
     async def lifespan(application: FastAPI):
         yield
         if service_state is None:
-            application.state.ai_bridge.close()
+            bridge.close()
 
     application = FastAPI(
         title="ARGUS-X Full-Stack Platform API",
@@ -94,7 +123,7 @@ def create_fullstack_app(
     @application.get("/api/health", tags=["health"])
     def api_health() -> dict[str, object]:
         stats = bridge.state.get_statistics()
-        return {"status": "ok", "service": "ARGUS-X", "ai_stats": stats}
+        return {"status": "ok", "service": "ARGUS-X", "cloud_mode": _CLOUD_MODE, "ai_stats": stats}
 
     # Full-stack authenticated /api/* routes
     application.include_router(auth_router)
@@ -109,10 +138,14 @@ def create_fullstack_app(
     application.include_router(videos_router)
     application.include_router(multicamera_router)
 
-    # Preserve legacy /cameras, /identities, /audit endpoints for existing Streamlit dashboard
-    application.include_router(legacy_cameras_router)
-    application.include_router(legacy_identities_router)
-    application.include_router(legacy_audit_router)
+    if not _CLOUD_MODE:
+        # Legacy routes use full AI state – skip on cloud/API-only instances
+        from api.routes.audit import router as legacy_audit_router
+        from api.routes.cameras import router as legacy_cameras_router
+        from api.routes.identities import router as legacy_identities_router
+        application.include_router(legacy_cameras_router)
+        application.include_router(legacy_identities_router)
+        application.include_router(legacy_audit_router)
 
     return application
 

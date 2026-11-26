@@ -2,12 +2,16 @@ services:
   - type: web
     name: argus-x-backend
     runtime: python
-    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    buildCommand: pip install --upgrade pip && pip install fastapi uvicorn[standard] websockets httpx python-multipart python-dotenv pydantic SQLAlchemy psycopg2-binary alembic argon2-cffi PyJWT pillow requests
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
     healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
+      - key: RENDER
+        value: "true"
+      - key: ARGUS_CLOUD_MODE
+        value: "true"
       - key: DATABASE_URL
         sync: false
       - key: JWT_SECRET_KEY
@@ -19,7 +23,7 @@ services:
       - key: COOKIE_SAMESITE
         value: none
       - key: CORS_ORIGINS
-        sync: false
+        value: "https://argus-x-rho.vercel.app,http://localhost:5173,http://127.0.0.1:5173"
       - key: AI_MEMORY_DB_PATH
         value: logs/argus_memory.db
       - key: AI_MEMORY_INDEX_PATH
