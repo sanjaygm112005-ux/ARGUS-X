@@ -101,9 +101,20 @@ def generate_csrf_token() -> str:
     return secrets.token_urlsafe(32)
 
 
+def _extract_bearer_token(request: Request) -> Optional[str]:
+    auth_header = request.headers.get("authorization") or ""
+    if auth_header.lower().startswith("bearer "):
+        token = auth_header[7:].strip()
+        return token or None
+    return None
+
+
 def verify_csrf(request: Request) -> None:
-    """Double-submit cookie CSRF check for state-changing authenticated requests."""
+    """Double-submit cookie CSRF check for state-changing cookie-authenticated requests."""
     if request.method in ("GET", "HEAD", "OPTIONS"):
+        return
+    # Bearer-token requests in Authorization headers are not vulnerable to CSRF
+    if _extract_bearer_token(request):
         return
     cookie_csrf = request.cookies.get(CSRF_COOKIE_NAME)
     header_csrf = request.headers.get(CSRF_HEADER_NAME)
@@ -152,8 +163,8 @@ def get_current_user(
     request: Request,
     db: Session = Depends(get_db),
 ) -> User:
-    """Authenticate the caller via HttpOnly JWT cookie and active DB session."""
-    token = request.cookies.get(ACCESS_COOKIE_NAME)
+    """Authenticate the caller via HttpOnly JWT cookie or Authorization Bearer token."""
+    token = request.cookies.get(ACCESS_COOKIE_NAME) or _extract_bearer_token(request)
     if not token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

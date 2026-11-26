@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
-import api from "../services/api";
+import api, { setStoredAccessToken } from "../services/api";
 
 const AuthContext = createContext(null);
 
@@ -12,6 +12,7 @@ export function AuthProvider({ children }) {
       const { data } = await api.get("/api/auth/me");
       setUser(data.user);
     } catch {
+      setStoredAccessToken(null);
       setUser(null);
     } finally {
       setLoading(false);
@@ -28,6 +29,9 @@ export function AuthProvider({ children }) {
       password,
       remember_me: rememberMe,
     });
+    if (data?.access_token) {
+      setStoredAccessToken(data.access_token);
+    }
     setUser(data.user);
     return data.user;
   };
@@ -41,6 +45,7 @@ export function AuthProvider({ children }) {
     try {
       await api.post("/api/auth/logout");
     } finally {
+      setStoredAccessToken(null);
       setUser(null);
     }
   };

@@ -10,6 +10,8 @@ vi.mock("../services/api", () => ({
   API_BASE_URL: "",
   apiUrl: (path) => path,
   wsUrl: (path) => `ws://localhost${path}`,
+  setStoredAccessToken: vi.fn(),
+  getStoredAccessToken: () => "",
   default: {
     get: vi.fn(),
     post: vi.fn(),

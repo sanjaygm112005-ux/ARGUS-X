@@ -30,9 +30,27 @@ const api = axios.create({
   },
 });
 
+const TOKEN_STORAGE_KEY = "argus_access_token";
+
+export function setStoredAccessToken(token) {
+  if (token) {
+    localStorage.setItem(TOKEN_STORAGE_KEY, token);
+  } else {
+    localStorage.removeItem(TOKEN_STORAGE_KEY);
+  }
+}
+
+export function getStoredAccessToken() {
+  return localStorage.getItem(TOKEN_STORAGE_KEY) || "";
+}
+
 api.interceptors.request.use((config) => {
   if (config.data instanceof FormData) {
     delete config.headers["Content-Type"];
+  }
+  const bearer = getStoredAccessToken();
+  if (bearer && !config.headers["Authorization"]) {
+    config.headers["Authorization"] = `Bearer ${bearer}`;
   }
   const method = (config.method || "get").toLowerCase();
   if (["post", "put", "patch", "delete"].includes(method)) {

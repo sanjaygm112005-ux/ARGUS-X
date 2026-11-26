@@ -161,6 +161,7 @@ def login(
     return {
         "user": _serialize_user(user).model_dump(),
         "csrf_token": csrf_token,
+        "access_token": token,
     }
 
 
