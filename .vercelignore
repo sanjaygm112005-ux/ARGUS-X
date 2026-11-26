@@ -1,0 +1,14 @@
+node_modules
+.git
+venv
+datasets
+weights
+runs
+logs
+*.pt
+*.pth
+*.mp4
+*.avi
+*.db
+*.faiss
+__pycache__

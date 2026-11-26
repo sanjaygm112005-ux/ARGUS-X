@@ -55,3 +55,5 @@ frontend/.env*
 # Environment & secrets
 .env
 .env.local
+.vercel
+.env*
