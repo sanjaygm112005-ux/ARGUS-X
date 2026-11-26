@@ -450,9 +450,21 @@ def analyze_uploaded_video(
     db: Session = Depends(get_db),
 ) -> dict[str, object]:
     """Start ARGUS-X tracking + Re-ID analysis on an uploaded video."""
+    import os
+    if os.getenv("ARGUS_CLOUD_MODE", "").lower() in ("1", "true", "yes"):
+        raise HTTPException(
+            status_code=503,
+            detail="Live AI video analysis (YOLO11 + BoT-SORT + OSNet) is disabled on the lightweight cloud API tier. Run the local backend (http://localhost:5173) for full AI video processing.",
+        )
+
     v = _find_video(db, video_id)
     if v.analysis_status == "PROCESSING":
         raise HTTPException(status_code=409, detail="Video analysis is already in progress.")
+    if not Path(v.storage_path).is_file():
+        raise HTTPException(
+            status_code=404,
+            detail="Video file not found on this server. Please re-upload the video here.",
+        )
 
     max_frames = payload.max_frames if payload else None
     v.analysis_status = "QUEUED"
