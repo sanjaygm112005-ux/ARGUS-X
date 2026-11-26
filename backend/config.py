@@ -36,9 +36,10 @@ class BackendSettings:
 @lru_cache(maxsize=1)
 def get_backend_settings() -> BackendSettings:
     """Return cached backend settings from environment variables."""
+    is_render = os.getenv("RENDER", "").lower() in ("1", "true", "yes")
     raw_origins = os.getenv(
         "CORS_ORIGINS",
-        "http://localhost:5173,http://127.0.0.1:5173",
+        "http://localhost:5173,http://127.0.0.1:5173,https://argus-x-rho.vercel.app",
     )
     origins = tuple(o.strip() for o in raw_origins.split(",") if o.strip())
 
@@ -56,8 +57,8 @@ def get_backend_settings() -> BackendSettings:
         ),
         jwt_algorithm=os.getenv("JWT_ALGORITHM", "HS256"),
         access_token_expire_minutes=int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60")),
-        cookie_secure=os.getenv("COOKIE_SECURE", "false").lower() in ("1", "true", "yes"),
-        cookie_samesite=os.getenv("COOKIE_SAMESITE", "lax").lower(),
+        cookie_secure=os.getenv("COOKIE_SECURE", "true" if is_render else "false").lower() in ("1", "true", "yes"),
+        cookie_samesite=os.getenv("COOKIE_SAMESITE", "none" if is_render else "lax").lower(),
         login_rate_limit_attempts=int(os.getenv("LOGIN_RATE_LIMIT_ATTEMPTS", "5")),
         login_rate_limit_window_seconds=int(os.getenv("LOGIN_RATE_LIMIT_WINDOW_SECONDS", "300")),
         cors_origins=origins,

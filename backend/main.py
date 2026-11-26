@@ -85,6 +85,7 @@ def create_fullstack_app(
     application.add_middleware(
         CORSMiddleware,
         allow_origins=list(settings.cors_origins),
+        allow_origin_regex=r"https://argus-[a-z0-9-]+-sanjaygm112005-uxs-projects\.vercel\.app|https://argus-x-rho\.vercel\.app",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
