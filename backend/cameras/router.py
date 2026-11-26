@@ -5,6 +5,7 @@ from __future__ import annotations
 import re
 import uuid
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Request, Response, UploadFile, status
 from sqlalchemy.orm import Session
@@ -14,8 +15,10 @@ from backend.config import PROJECT_ROOT
 from backend.database.session import get_db
 from backend.models import Camera, User
 from backend.schemas import CameraCreateRequest, CameraUpdateRequest
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.audit_service import record_audit_event
+
+if TYPE_CHECKING:
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/cameras", tags=["cameras"])
 UPLOAD_DIR = PROJECT_ROOT / "datasets" / "uploads"

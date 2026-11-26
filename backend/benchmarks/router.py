@@ -8,9 +8,8 @@ import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-import cv2
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
@@ -24,9 +23,10 @@ from backend.datasets.service import (
 )
 from backend.benchmarks.mot_eval import evaluate_mot17_predictions
 from backend.models import BenchmarkJob, BenchmarkResult, User
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.audit_service import record_audit_event
-from tracking.tracker import ObjectTracker
+
+if TYPE_CHECKING:
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/benchmark", tags=["benchmark"])
 
@@ -125,6 +125,9 @@ def _run_mot17_benchmark_worker(
 
         if total_to_eval == 0:
             raise RuntimeError(f"No {im_ext} frames found in {img_dir}")
+
+        import cv2
+        from tracking.tracker import ObjectTracker
 
         gt_by_frame = load_mot17_ground_truth(gt_path, pedestrian_only=True)
         tracker = ObjectTracker(device="cpu")

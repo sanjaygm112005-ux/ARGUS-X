@@ -9,10 +9,8 @@ import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-import cv2
-import numpy as np
 from fastapi import APIRouter, Depends, File, Form, HTTPException, Query, Request, UploadFile, status
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
@@ -22,11 +20,12 @@ from backend.auth.security import require_roles, verify_csrf
 from backend.config import PROJECT_ROOT
 from backend.database.session import SessionLocal, get_db
 from backend.models import UploadedVideo, User
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.audit_service import record_audit_event
-from association import AssociationConfig
-from identity_memory import MultiCameraIdentityManager, TrackletManager
-from tracking.tracker import ObjectTracker
+
+if TYPE_CHECKING:
+    import cv2
+    import numpy as np
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/videos", tags=["videos"])
 
@@ -95,6 +94,10 @@ def _find_video(db: Session, video_id: str) -> UploadedVideo:
 
 def _probe_video_metadata(path: Path) -> tuple[float, float, int, int, int]:
     """Extract (duration_sec, fps, width, height, total_frames) via OpenCV."""
+    try:
+        import cv2
+    except ImportError:
+        return 0.0, 25.0, 0, 0, 0
     cap = cv2.VideoCapture(str(path))
     if not cap.isOpened():
         raise ValueError("Unable to decode uploaded video file.")
@@ -113,6 +116,8 @@ def _probe_video_metadata(path: Path) -> tuple[float, float, int, int, int]:
 
 def _open_video_writer(out_path: Path, fps: float, width: int, height: int) -> cv2.VideoWriter:
     """Create a browser-friendly VideoWriter (avc1 fallback to mp4v)."""
+    import cv2
+
     out_path.parent.mkdir(parents=True, exist_ok=True)
     for codec in ("avc1", "mp4v"):
         fourcc = cv2.VideoWriter_fourcc(*codec)
@@ -137,6 +142,12 @@ def _analyze_video_worker(
         v.analysis_progress = 0.0
         v.error_message = None
         db.commit()
+
+        import cv2
+        import numpy as np
+        from association import AssociationConfig
+        from identity_memory import MultiCameraIdentityManager, TrackletManager
+        from tracking.tracker import ObjectTracker
 
         src_path = Path(v.storage_path)
         cap = cv2.VideoCapture(str(src_path))

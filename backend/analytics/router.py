@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, Depends, Request
 from sqlalchemy.orm import Session
@@ -12,7 +13,9 @@ from backend.auth.security import require_roles
 from backend.config import PROJECT_ROOT
 from backend.database.session import get_db
 from backend.models import BenchmarkResult, Camera, Identity, RecoveryEvent, TrackingEvent, User
-from backend.services.ai_engine import ArgusAIEngineBridge
+
+if TYPE_CHECKING:
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/analytics", tags=["analytics"])
 

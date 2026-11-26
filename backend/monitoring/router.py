@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, Depends, Request, WebSocket, WebSocketDisconnect
 from sqlalchemy.orm import Session
@@ -10,7 +11,9 @@ from sqlalchemy.orm import Session
 from backend.auth.security import ACCESS_COOKIE_NAME, decode_access_token, require_roles
 from backend.database.session import SessionLocal, get_db
 from backend.models import User, UserSession
-from backend.services.ai_engine import ArgusAIEngineBridge
+
+if TYPE_CHECKING:
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(tags=["monitoring"])
 

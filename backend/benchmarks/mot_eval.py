@@ -4,9 +4,10 @@ from __future__ import annotations
 
 from collections import defaultdict
 from dataclasses import dataclass
+from typing import TYPE_CHECKING
 
-import numpy as np
-from scipy.optimize import linear_sum_assignment
+if TYPE_CHECKING:
+    import numpy as np
 
 
 @dataclass(frozen=True)
@@ -26,6 +27,8 @@ class MOTMetricsResult:
 
 def _iou_matrix(gt_boxes: np.ndarray, pr_boxes: np.ndarray) -> np.ndarray:
     """Compute pairwise IoU between (N, 4) xywh GT boxes and (M, 4) xywh pred boxes."""
+    import numpy as np
+
     if len(gt_boxes) == 0 or len(pr_boxes) == 0:
         return np.zeros((len(gt_boxes), len(pr_boxes)), dtype=np.float64)
 
@@ -67,6 +70,9 @@ def evaluate_mot17_predictions(
         pred_by_frame: 1-based frame_idx -> list of {id, x, y, w, h}
         evaluated_frames: Sorted list of 1-based frame indices evaluated.
     """
+    import numpy as np
+    from scipy.optimize import linear_sum_assignment
+
     total_gt = 0
     total_tp = 0
     total_fp = 0

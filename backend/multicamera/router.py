@@ -8,10 +8,8 @@ import time
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-import cv2
-import numpy as np
 from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
@@ -26,10 +24,11 @@ from backend.models import (
     UploadedVideo,
     User,
 )
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.audit_service import record_audit_event
-from identity_memory import TrackletManager
-from tracking.tracker import ObjectTracker
+
+if TYPE_CHECKING:
+    import numpy as np
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/multicamera", tags=["multicamera"])
 
@@ -165,6 +164,11 @@ def _run_multicamera_worker(
                     enabled=True,
                     auto_start=False,
                 )
+
+            import cv2
+            import numpy as np
+            from identity_memory import TrackletManager
+            from tracking.tracker import ObjectTracker
 
             cap = cv2.VideoCapture(str(video_path))
             if not cap.isOpened():

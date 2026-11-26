@@ -39,9 +39,15 @@ def _build_ai_bridge(service_state=None):
     """Lazy-load heavy AI imports only when NOT in cloud/API-only mode."""
     if _CLOUD_MODE:
         # Return a lightweight stub so the API server starts without loading GPU models
+        from datetime import datetime, timezone
+        from backend.models import Camera, Identity, IdentityObservation, RecoveryEvent
+
         class _AIStub:
             def get_statistics(self):
                 return {"mode": "cloud-api-only", "ai_enabled": False}
+
+            def get_camera_stream_payload(self, camera_code: str):
+                raise KeyError(camera_code)
 
             def close(self):
                 pass
@@ -51,6 +57,94 @@ def _build_ai_bridge(service_state=None):
 
             def register_or_sync_camera(self, *a, **kw):
                 pass
+
+            def get_monitoring_snapshot(self, db):
+                cams = db.query(Camera).order_by(Camera.id.asc()).all()
+                ids = db.query(Identity).order_by(Identity.id.asc()).all()
+                uncertain_count = db.query(IdentityObservation).filter(
+                    IdentityObservation.decision == "UNCERTAIN"
+                ).count()
+                return {
+                    "status": "ok",
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "statistics": {
+                        "total_cameras": len(cams),
+                        "online_cameras": sum(1 for c in cams if c.status == "ONLINE"),
+                        "offline_cameras": sum(1 for c in cams if c.status != "ONLINE"),
+                        "total_identities": len(ids),
+                        "active_identities": sum(1 for i in ids if i.lifecycle_state == "ACTIVE"),
+                        "temporarily_lost_identities": sum(1 for i in ids if i.lifecycle_state == "TEMPORARILY_LOST"),
+                        "recovered_identities": sum(1 for i in ids if i.lifecycle_state == "RECOVERED"),
+                        "expired_identities": sum(1 for i in ids if i.lifecycle_state == "EXPIRED"),
+                        "uncertain_observations": uncertain_count,
+                        "total_observations_in_memory": db.query(IdentityObservation).count(),
+                        "total_conflicts": sum(1 for i in ids if i.has_conflict),
+                    },
+                    "cameras": [
+                        {
+                            "id": c.camera_code,
+                            "name": c.name,
+                            "enabled": c.enabled,
+                            "online": c.status == "ONLINE",
+                            "fps": c.fps,
+                            "active_tracks": 0,
+                        }
+                        for c in cams
+                    ],
+                    "tracking_events": [],
+                    "identities": [
+                        {
+                            "global_id": i.global_id,
+                            "lifecycle_state": i.lifecycle_state,
+                            "last_seen_camera": i.last_seen_camera,
+                            "confidence": i.confidence,
+                            "has_conflict": i.has_conflict,
+                            "observation_count": i.observation_count,
+                        }
+                        for i in ids
+                    ],
+                    "uncertain_alerts": [],
+                }
+
+            def list_safe_identities(self, db):
+                rows = db.query(Identity).order_by(Identity.updated_at.desc()).all()
+                return [
+                    {
+                        "id": r.id,
+                        "global_id": r.global_id,
+                        "display_label": r.display_label or r.global_id,
+                        "lifecycle_state": r.lifecycle_state,
+                        "last_seen_camera": r.last_seen_camera,
+                        "confidence": r.confidence,
+                        "observation_count": r.observation_count,
+                        "has_conflict": r.has_conflict,
+                        "camera_history": r.camera_history or [],
+                        "created_at": r.created_at.isoformat() if r.created_at else None,
+                        "updated_at": r.updated_at.isoformat() if r.updated_at else None,
+                    }
+                    for r in rows
+                ]
+
+            def list_uncertain_queue(self, db):
+                rows = (
+                    db.query(IdentityObservation)
+                    .filter(IdentityObservation.decision == "UNCERTAIN")
+                    .order_by(IdentityObservation.id.desc())
+                    .limit(100)
+                    .all()
+                )
+                return [
+                    {
+                        "id": r.id,
+                        "camera_id": r.camera_code,
+                        "track_id": r.track_id,
+                        "candidate_global_id": r.global_id,
+                        "similarity_score": r.confidence,
+                        "decision": r.decision,
+                        "reason": r.reason,
+                    }
+                    for r in rows
+                ]
 
             def close(self):
                 pass

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from sqlalchemy.orm import Session
@@ -11,8 +11,10 @@ from backend.auth.security import require_roles, verify_csrf
 from backend.database.session import get_db
 from backend.models import Identity, RecoveryEvent, User
 from backend.schemas import IdentityReviewPayload
-from backend.services.ai_engine import ArgusAIEngineBridge
 from backend.services.audit_service import record_audit_event
+
+if TYPE_CHECKING:
+    from backend.services.ai_engine import ArgusAIEngineBridge
 
 router = APIRouter(prefix="/api/identities", tags=["identities"])
 
